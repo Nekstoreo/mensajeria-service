@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "Mensajeria Service API",
+    "_postman_id": "c7b9f5a8-1234-5678-9abc-def012345678",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Notifications",
+      "description": "Endpoints para gestionar notificaciones de pedidos listos",
+      "item": [
+        {
+          "name": "Send Order Ready Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phoneNumber\": \"+573135036720\",\n  \"orderId\": \"123\",\n  \"securityPin\": \"456789\",\n  \"restaurantName\": \"Mi Restaurante\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/notifications/order-ready",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "notifications",
+                "order-ready"
+              ]
+            },
+            "description": "Envía una notificación SMS al cliente cuando su pedido está listo para reclamar. Incluye:\n- Número de teléfono del cliente\n- ID del pedido\n- PIN de seguridad (6 dígitos generado por plazoleta-service)\n- Nombre del restaurante\n\nEl cliente debe presentar el PIN para reclamar su pedido.\n\n📌 FLUJO COMPLETO EN LA PLATAFORMA:\n1. Empleado marca pedido como READY en plazoleta-service (PATCH /api/v1/orders/ready)\n2. plazoleta-service genera PIN de 6 dígitos\n3. plazoleta-service obtiene teléfono del cliente desde usuarios-service\n4. plazoleta-service invoca este endpoint en mensajeria-service\n5. mensajeria-service envía SMS vía Twilio al cliente"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8084",
+      "type": "string",
+      "description": "URL base del servicio mensajeria"
+    },
+    {
+      "key": "jwt_token",
+      "value": "<JWT_TOKEN_PLACEHOLDER>",
+      "type": "string",
+      "description": "Token JWT con permisos de rol empleado (obtenido del login en usuarios-service)"
+    },
+    {
+      "key": "twilio_account_sid",
+      "value": "<TWILIO_ACCOUNT_SID_PLACEHOLDER>",
+      "type": "string",
+      "description": "Account SID de Twilio (configurado en .env)"
+    },
+    {
+      "key": "twilio_messaging_service_sid",
+      "value": "<TWILIO_MESSAGING_SERVICE_SID_PLACEHOLDER>",
+      "type": "string",
+      "description": "Messaging Service SID de Twilio (configurado en .env)"
+    }
+  ]
+}
