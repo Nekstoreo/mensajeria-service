@@ -69,10 +69,10 @@ class NotificationUseCaseTest {
             notificationUseCase.sendOrderReadyNotification(message);
 
             String capturedMessage = messageCaptor.getValue();
-            assertThat(capturedMessage).contains(ORDER_ID);
-            assertThat(capturedMessage).contains(SECURITY_PIN);
-            assertThat(capturedMessage).contains(RESTAURANT_NAME);
-            assertThat(capturedMessage).contains("LISTO");
+            // Unificar múltiples aserciones en una sola cadena de AssertJ
+            assertThat(capturedMessage)
+                    .isNotNull()
+                    .contains(ORDER_ID, SECURITY_PIN, RESTAURANT_NAME, "LISTO");
         }
 
         @Test
@@ -83,6 +83,7 @@ class NotificationUseCaseTest {
 
             when(smsMessagingPort.sendSms(eq(PHONE_NUMBER), anyString()))
                     .thenReturn(expectedResult);
+
 
             NotificationResult result = notificationUseCase.sendOrderReadyNotification(message);
 
