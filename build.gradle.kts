@@ -29,6 +29,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
     
+    // Dotenv for environment variables
+    implementation("me.paulschwarz:spring-dotenv:4.0.0")
+    
     // Twilio SDK
     implementation("com.twilio.sdk:twilio:10.6.4")
     
