@@ -24,7 +24,7 @@ repositories {
 }
 
 extra.apply {
-    set("springdocVersion", "2.6.0")
+    set("springdocVersion", "3.0.0")
     set("mapstructVersion", "1.6.3")
     set("jjwtVersion", "0.12.6")
     set("lombokVersion", "1.18.34")
