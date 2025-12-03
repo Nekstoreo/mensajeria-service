@@ -50,15 +50,19 @@ dependencies {
     
     // MapStruct
     implementation("org.mapstruct:mapstruct:${property("mapstructVersion")}")
-    annotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
-    
-    // Lombok
-    compileOnly("org.projectlombok:lombok:${property("lombokVersion")}")
-    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
-    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:${property("lombokMapstructBindingVersion")}")
     
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:${property("jjwtVersion")}")
+    
+    // Lombok
+    compileOnly("org.projectlombok:lombok:${property("lombokVersion")}")
+    
+    // Annotation Processors
+    annotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:${property("lombokMapstructBindingVersion")}")
+    
+    // Runtime Only
     runtimeOnly("io.jsonwebtoken:jjwt-impl:${property("jjwtVersion")}")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:${property("jjwtVersion")}")
     
