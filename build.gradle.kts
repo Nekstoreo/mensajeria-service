@@ -23,6 +23,16 @@ repositories {
     mavenCentral()
 }
 
+extra.apply {
+    set("springdocVersion", "2.6.0")
+    set("mapstructVersion", "1.6.3")
+    set("jjwtVersion", "0.12.6")
+    set("lombokVersion", "1.18.34")
+    set("lombokMapstructBindingVersion", "0.2.0")
+    set("dotenvVersion", "4.0.0")
+    set("twilioVersion", "10.6.4")
+}
+
 dependencies {
     // Spring Boot Starters
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -30,27 +40,27 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     
     // Dotenv for environment variables
-    implementation("me.paulschwarz:spring-dotenv:4.0.0")
+    implementation("me.paulschwarz:spring-dotenv:${property("dotenvVersion")}")
     
     // Twilio SDK
-    implementation("com.twilio.sdk:twilio:10.6.4")
+    implementation("com.twilio.sdk:twilio:${property("twilioVersion")}")
     
     // OpenAPI / Swagger
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${property("springdocVersion")}")
     
     // MapStruct
-    implementation("org.mapstruct:mapstruct:1.6.3")
-    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
+    implementation("org.mapstruct:mapstruct:${property("mapstructVersion")}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
     
     // Lombok
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+    compileOnly("org.projectlombok:lombok:${property("lombokVersion")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:${property("lombokMapstructBindingVersion")}")
     
     // JWT
-    implementation("io.jsonwebtoken:jjwt-api:0.12.6")
-    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
-    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+    implementation("io.jsonwebtoken:jjwt-api:${property("jjwtVersion")}")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:${property("jjwtVersion")}")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:${property("jjwtVersion")}")
     
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
