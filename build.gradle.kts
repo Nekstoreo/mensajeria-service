@@ -1,7 +1,7 @@
 plugins {
     java
-    id("org.springframework.boot") version "3.4.0"
-    id("io.spring.dependency-management") version "1.1.6"
+    id("org.springframework.boot") version "4.0.0"
+    id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.pragma"
@@ -25,8 +25,8 @@ repositories {
 
 extra.apply {
     set("springdocVersion", "3.0.0")
-    set("mapstructVersion", "1.6.3")
-    set("jjwtVersion", "0.12.6")
+    set("mapstructVersion", "1.6.2")
+    set("jjwtVersion", "0.12.5")
     set("lombokVersion", "1.18.34")
     set("lombokMapstructBindingVersion", "0.2.0")
     set("dotenvVersion", "4.0.0")
