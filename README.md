@@ -9,3 +9,7 @@ Microservicio encargado del envío de notificaciones SMS del sistema Plaza de Co
 ## Documentación
 
 - Más detalles técnicos en: [Documentación técnica](./docs/mensajeria-service-technical-documentation.md)
+
+## Repositorio Principal
+
+[Volver al repositorio principal](https://github.com/Nekstoreo/plazoleta-microservicios)
