@@ -1,4 +1,4 @@
-package com.pragma.mensajeria.infrastructure.exception;
+package com.pragma.mensajeria.domain.exception;
 
 public class InvalidPhoneNumberException extends RuntimeException {
 

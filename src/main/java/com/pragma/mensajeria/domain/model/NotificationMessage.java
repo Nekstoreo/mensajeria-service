@@ -3,7 +3,7 @@ package com.pragma.mensajeria.domain.model;
 public class NotificationMessage {
 
     private String phoneNumber;
-    private String message;
+    private String contenidoDelMensaje;
     private String orderId;
     private String securityPin;
     private String restaurantName;
@@ -11,9 +11,9 @@ public class NotificationMessage {
     public NotificationMessage() {
     }
 
-    public NotificationMessage(String phoneNumber, String message, String orderId, String securityPin, String restaurantName) {
+    public NotificationMessage(String phoneNumber, String contenidoDelMensaje, String orderId, String securityPin, String restaurantName) {
         this.phoneNumber = phoneNumber;
-        this.message = message;
+        this.contenidoDelMensaje = contenidoDelMensaje;
         this.orderId = orderId;
         this.securityPin = securityPin;
         this.restaurantName = restaurantName;
@@ -27,12 +27,12 @@ public class NotificationMessage {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContenidoDelMensaje() {
+        return contenidoDelMensaje;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContenidoDelMensaje(String contenidoDelMensaje) {
+        this.contenidoDelMensaje = contenidoDelMensaje;
     }
 
     public String getOrderId() {
