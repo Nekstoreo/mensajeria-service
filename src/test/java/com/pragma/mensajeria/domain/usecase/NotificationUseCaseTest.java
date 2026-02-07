@@ -109,6 +109,230 @@ class NotificationUseCaseTest {
 
             verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
         }
+
+        @Test
+        @DisplayName("Should throw exception when phone number is empty")
+        void shouldThrowExceptionWhenPhoneNumberIsEmpty() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setPhoneNumber("");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Phone number is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when phone number is only whitespace")
+        void shouldThrowExceptionWhenPhoneNumberIsOnlyWhitespace() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setPhoneNumber("   ");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Phone number is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when notification message is null")
+        void shouldThrowExceptionWhenNotificationMessageIsNull() {
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(null))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Notification message cannot be null");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when security PIN is null")
+        void shouldThrowExceptionWhenSecurityPinIsNull() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setSecurityPin(null);
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Security PIN is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when security PIN is empty")
+        void shouldThrowExceptionWhenSecurityPinIsEmpty() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setSecurityPin("");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Security PIN is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when security PIN is only whitespace")
+        void shouldThrowExceptionWhenSecurityPinIsOnlyWhitespace() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setSecurityPin("   ");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Security PIN is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when order ID is null")
+        void shouldThrowExceptionWhenOrderIdIsNull() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setOrderId(null);
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Order ID is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when order ID is empty")
+        void shouldThrowExceptionWhenOrderIdIsEmpty() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setOrderId("");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Order ID is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when order ID is only whitespace")
+        void shouldThrowExceptionWhenOrderIdIsOnlyWhitespace() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setOrderId("   ");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Order ID is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when restaurant name is null")
+        void shouldThrowExceptionWhenRestaurantNameIsNull() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setRestaurantName(null);
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Restaurant name is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when restaurant name is empty")
+        void shouldThrowExceptionWhenRestaurantNameIsEmpty() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setRestaurantName("");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Restaurant name is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should throw exception when restaurant name is only whitespace")
+        void shouldThrowExceptionWhenRestaurantNameIsOnlyWhitespace() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            message.setRestaurantName("   ");
+
+            // Act & Assert
+            assertThatThrownBy(() -> notificationUseCase.sendOrderReadyNotification(message))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("Restaurant name is required");
+
+            verify(smsMessagingPort, never()).sendSms(anyString(), anyString());
+        }
+
+        @Test
+        @DisplayName("Should format message with template when all validations pass")
+        void shouldFormatMessageWithTemplate() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            NotificationResult expectedResult = NotificationResult.success("MSG456");
+            ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+
+            when(smsMessagingPort.sendSms(eq(PHONE_NUMBER), messageCaptor.capture()))
+                    .thenReturn(expectedResult);
+
+            // Act
+            NotificationResult result = notificationUseCase.sendOrderReadyNotification(message);
+
+            // Assert
+            String capturedMessage = messageCaptor.getValue();
+            assertThat(capturedMessage)
+                    .contains(ORDER_ID)
+                    .contains(RESTAURANT_NAME)
+                    .contains(SECURITY_PIN)
+                    .contains("LISTO")
+                    .contains("PIN");
+
+            assertThat(result.isSuccess()).isTrue();
+        }
+
+        @Test
+        @DisplayName("Should call SMS port with correct phone and formatted message")
+        void shouldCallSmsPortWithCorrectPhoneAndFormattedMessage() {
+            // Arrange
+            NotificationMessage message = createValidNotificationMessage();
+            NotificationResult expectedResult = NotificationResult.success("MSG789");
+            ArgumentCaptor<String> phoneCaptor = ArgumentCaptor.forClass(String.class);
+            ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+
+            when(smsMessagingPort.sendSms(phoneCaptor.capture(), messageCaptor.capture()))
+                    .thenReturn(expectedResult);
+
+            // Act
+            notificationUseCase.sendOrderReadyNotification(message);
+
+            // Assert
+            assertThat(phoneCaptor.getValue()).isEqualTo(PHONE_NUMBER);
+            assertThat(messageCaptor.getValue()).isNotEmpty();
+
+            verify(smsMessagingPort).sendSms(PHONE_NUMBER, messageCaptor.getValue());
+        }
     }
 
     private NotificationMessage createValidNotificationMessage() {
