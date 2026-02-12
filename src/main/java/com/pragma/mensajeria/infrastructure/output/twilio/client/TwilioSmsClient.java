@@ -31,7 +31,7 @@ public class TwilioSmsClient {
 
     public NotificationResult sendSms(String toPhoneNumber, String messageBody) {
         try {
-            // Validar formato del teléfono
+            // Validate phone number format
             if (!isValidPhoneNumber(toPhoneNumber)) {
                 String errorMsg = "Invalid phone number format.";
                 logger.warn("Validation error - {}: {}", errorMsg, toPhoneNumber);

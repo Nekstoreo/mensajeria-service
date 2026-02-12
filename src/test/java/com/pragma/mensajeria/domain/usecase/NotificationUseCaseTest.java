@@ -72,7 +72,7 @@ class NotificationUseCaseTest {
             // Unificar múltiples aserciones en una sola cadena de AssertJ
             assertThat(capturedMessage)
                     .isNotNull()
-                    .contains(ORDER_ID, SECURITY_PIN, RESTAURANT_NAME, "LISTO");
+                    .contains(ORDER_ID, SECURITY_PIN, RESTAURANT_NAME, "READY");
         }
 
         @Test
@@ -306,7 +306,7 @@ class NotificationUseCaseTest {
                     .contains(ORDER_ID)
                     .contains(RESTAURANT_NAME)
                     .contains(SECURITY_PIN)
-                    .contains("LISTO")
+                    .contains("READY")
                     .contains("PIN");
 
             assertThat(result.isSuccess()).isTrue();

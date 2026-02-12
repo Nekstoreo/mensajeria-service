@@ -8,9 +8,9 @@ import com.pragma.mensajeria.domain.spi.ISmsMessagingPort;
 public class NotificationUseCase implements INotificationServicePort {
 
     private static final String ORDER_READY_MESSAGE_TEMPLATE = 
-            "¡Hola! Tu pedido #%s en %s está LISTO para recoger. " +
-            "Tu PIN de seguridad es: %s. " +
-            "Presenta este PIN al empleado para reclamar tu pedido.";
+            "Hello! Your order #%s at %s is READY for pickup. " +
+            "Your security PIN is: %s. " +
+            "Please present this PIN to the employee to claim your order.";
 
     private final ISmsMessagingPort smsMessagingPort;
 
