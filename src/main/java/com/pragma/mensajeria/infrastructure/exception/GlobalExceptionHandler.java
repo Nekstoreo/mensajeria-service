@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
     private static final String BAD_REQUEST = "Bad Request";
+    private static final String VALIDATION_ERROR = "Validation Error";
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(
@@ -32,14 +33,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException ex, HttpServletRequest request) {
+        // Use first validation message as main message for consistency
         String message = ex.getBindingResult().getFieldErrors().stream()
                 .map(FieldError::getDefaultMessage)
-                .collect(Collectors.joining(", "));
+                .findFirst()
+                .orElse("Input data validation error");
 
         ErrorResponse error = new ErrorResponse(
                 LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(),
-                BAD_REQUEST,
+                VALIDATION_ERROR,
                 message,
                 request.getRequestURI()
         );

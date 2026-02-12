@@ -25,6 +25,7 @@ import static org.mockito.Mockito.when;
 class GlobalExceptionHandlerTest {
 
     private static final String BAD_REQUEST = "Bad Request";
+    private static final String VALIDATION_ERROR = "Validation Error";
     private static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
     private static final String TEST_REQUEST_URI = "/api/v1/notifications";
     private static final String ILLEGAL_ARGUMENT_MESSAGE = "Invalid argument provided";
@@ -100,7 +101,7 @@ class GlobalExceptionHandlerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         assertThat(response.getBody()).isNotNull();
         assertThat(response.getBody().getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
-        assertThat(response.getBody().getError()).isEqualTo(BAD_REQUEST);
+        assertThat(response.getBody().getError()).isEqualTo(VALIDATION_ERROR);
         assertThat(response.getBody().getMessage()).isEqualTo(errorMessage);
     }
 
@@ -122,9 +123,8 @@ class GlobalExceptionHandlerTest {
         ResponseEntity<ErrorResponse> response = globalExceptionHandler.handleMethodArgumentNotValidException(ex, mockRequest);
 
         // Assert
-        assertThat(response.getBody().getMessage())
-                .contains("Phone number is required")
-                .contains("Order ID is required");
+        // The handler should return the first field error message as main message
+        assertThat(response.getBody().getMessage()).isEqualTo("Phone number is required");
     }
 
     @Test
