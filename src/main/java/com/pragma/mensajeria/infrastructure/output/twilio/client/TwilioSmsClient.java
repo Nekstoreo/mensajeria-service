@@ -25,7 +25,19 @@ public class TwilioSmsClient {
 
     @PostConstruct
     public void init() {
-        Twilio.init(twilioConfiguration.getAccountSid(), twilioConfiguration.getAuthToken());
+        String accountSid = twilioConfiguration.getAccountSid();
+        String authToken = twilioConfiguration.getAuthToken();
+        String msSid = twilioConfiguration.getMessagingServiceSid();
+
+        if (accountSid == null || accountSid.isBlank() || authToken == null || authToken.isBlank()) {
+            logger.error("Twilio credentials are missing or empty. accountSid present: {}, authToken present: {}",
+                    accountSid != null && !accountSid.isBlank(), authToken != null && !authToken.isBlank());
+            throw new IllegalStateException("Twilio credentials are not configured");
+        }
+
+        logger.info("Initializing Twilio client. Account SID: {}, Messaging Service SID present: {}",
+                accountSid, (msSid != null && !msSid.isBlank()));
+        Twilio.init(accountSid, authToken);
         logger.info("Twilio SMS client initialized successfully");
     }
 
