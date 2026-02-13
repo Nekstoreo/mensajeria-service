@@ -123,8 +123,8 @@ class GlobalExceptionHandlerTest {
         ResponseEntity<ErrorResponse> response = globalExceptionHandler.handleMethodArgumentNotValidException(ex, mockRequest);
 
         // Assert
-        // The handler should return the first field error message as main message
-        assertThat(response.getBody().getMessage()).isEqualTo("Phone number is required");
+        // The handler should return the first field error message (sorted) as main message
+        assertThat(response.getBody().getMessage()).isEqualTo("Order ID is required");
     }
 
     @Test
