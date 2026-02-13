@@ -3,6 +3,7 @@ package com.pragma.mensajeria.infrastructure.input.rest.controller;
 import com.pragma.mensajeria.application.dto.NotificationResponseDto;
 import com.pragma.mensajeria.application.dto.OrderReadyNotificationRequestDto;
 import com.pragma.mensajeria.application.handler.INotificationHandler;
+import com.pragma.mensajeria.infrastructure.constant.ApiConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/notifications")
+@RequestMapping(ApiConstants.NOTIFICATIONS_BASE_PATH)
 @Tag(name = "Notifications", description = "Notification management API for sending messages to clients")
 @SecurityRequirement(name = "bearerAuth")
 public class NotificationRestController {
