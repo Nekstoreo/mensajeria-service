@@ -1,5 +1,6 @@
 package com.pragma.mensajeria.infrastructure.configuration;
 
+import com.pragma.mensajeria.infrastructure.constant.ApiConstants;
 import com.pragma.mensajeria.infrastructure.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,12 +29,12 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         // Swagger and API docs - public
                         .requestMatchers(
-                                "/api-docs/**",
+                                ApiConstants.API_DOCS_PATH + "/**",
                                 "/swagger-ui/**",
-                                "/swagger-ui.html"
+                                ApiConstants.SWAGGER_PATH
                         ).permitAll()
                         // Notifications - require authentication (called by plazoleta-service)
-                        .requestMatchers("/api/v1/notifications/**").authenticated()
+                        .requestMatchers(ApiConstants.NOTIFICATIONS_BASE_PATH + "/**").authenticated()
                         // All other requests require authentication
                         .anyRequest().authenticated()
                 )
