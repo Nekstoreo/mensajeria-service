@@ -4,7 +4,9 @@ import com.pragma.mensajeria.domain.api.INotificationServicePort;
 import com.pragma.mensajeria.domain.model.NotificationMessage;
 import com.pragma.mensajeria.domain.model.NotificationResult;
 import com.pragma.mensajeria.domain.spi.ISmsMessagingPort;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class NotificationUseCase implements INotificationServicePort {
 
     private static final String ORDER_READY_MESSAGE_TEMPLATE = 
@@ -13,10 +15,6 @@ public class NotificationUseCase implements INotificationServicePort {
             "Please present this PIN to the employee to claim your order.";
 
     private final ISmsMessagingPort smsMessagingPort;
-
-    public NotificationUseCase(ISmsMessagingPort smsMessagingPort) {
-        this.smsMessagingPort = smsMessagingPort;
-    }
 
     @Override
     public NotificationResult sendOrderReadyNotification(NotificationMessage message) {
