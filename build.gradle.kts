@@ -31,7 +31,7 @@ extra.apply {
     set("lombokVersion", "1.18.42")
     set("lombokMapstructBindingVersion", "0.2.0")
     set("dotenvVersion", "4.0.0")
-    set("twilioVersion", "10.6.4")
+    set("twilioVersion", "11.3.3")
 }
 
 dependencies {
